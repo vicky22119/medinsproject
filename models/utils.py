@@ -3,6 +3,7 @@ import pickle
 import json
 import pandas as pd
 import numpy as np
+import os
 
 
 
@@ -16,10 +17,10 @@ class MedicalInsurance():
         self.region = "region_" + region
 
     def load_model(self):
-        with open("models\Linear_regression.pkl", "rb") as f:
+        with open(os.path.join("models","Linear_regression.pkl"), "rb") as f:
             self.model = pickle.load(f)
 
-        with open("models\project_data.json", "r") as f:
+        with open(os.path.join("models","project_data.json"), "r") as f:
             self.json_data = json.load(f)#instance variable 
 
     def get_predicted_price(self):
